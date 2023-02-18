@@ -1,7 +1,12 @@
-<div class='mt-4 border-bottom'>
-  <h4 class='mt-1'>{{job['title']}} </h4>
-  <div><b>Location: </b>{{job['location']}}</div>
-  {%if 'Salary' in job%}
-    <div><b>Salary: </b>{{job['Salary']}}</div>
-  {%endif%}
+<div class='mt-4 border-bottom row'style='padding-bottom:4px'>
+  <div class='col-9'>
+    <h4 class='mt-1'>{{job['title']}} </h4>
+    <div><b>Location: </b>{{job['location']}}</div>
+    {%if 'Salary' in job%}
+      <div><b>Salary: </b>{{job['Salary']}}</div>
+    {%endif%}
+  </div>
+  <div class='col-3 text-end'>
+    <button type="button" class="btn btn-outline-dark">Apply</button>
+  </div>
 </div>
