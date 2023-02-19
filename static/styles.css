@@ -1,8 +1,17 @@
-img{
+#image-forHire{
   width: 100%;
   max-width: 100%;
-  height: 300px;
+  height: auto;
   object-fit: cover;
+  border-radius: 4px;
+  display:block;
+}
+
+#img-women-chatting{
+  object-fit: cover;
+  width: 100%;
+  max-width: 100%;
+  height:auto;
   border-radius: 4px;
   display:block;
 }
