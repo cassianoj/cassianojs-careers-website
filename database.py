@@ -16,3 +16,17 @@ def load_jobs_from_db():
     for dict_row in result.mappings():
       data.append(dict(dict_row))
     return data
+
+
+def load_job_from_db(id):
+  with engine.connect() as conn:
+    result = conn.execute(
+      text("select * from cassianojs.jobs where id = :val"), {"val": id})
+    data = []
+    for dict_row in result.mappings():
+      data.append(dict(dict_row))
+    return data
+    if len(data) == 0:
+      return None
+    else:
+      data
