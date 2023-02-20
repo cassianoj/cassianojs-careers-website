@@ -7,9 +7,6 @@
     {%endif%}
   </div>
   <div class='col-3 text-end'>
-    <a 
-      target='_blank'
-      href="mailto:js.cassiano@cassiano.com?cc=js.argolo@gmail.com
-      &subject={{job['title']}}&body=Apply to:%0D%0A{{job['title']}}%0D%0A{{job['location']}}%0D%0A{{job['Salary']}}%0D%0A%0D%0A%3CLinkedIn%3E%0D%0A%3CGit%20Hub%3E%0D%0A%3CPersonal%20Website%3E%0D%0A%0D%0A%3CAbout%20me%20...%3E" type="button" class="btn btn-outline-dark">Apply</a>
+    <a href="/job/{{job['id']}}" type="button" class="btn btn-outline-dark">Apply</a>
   </div>
 </div>

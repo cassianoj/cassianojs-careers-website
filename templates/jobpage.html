@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang='en-US'>
   <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-   <link rel='icon' href='/static/scissors.gif'>
-    <title>Cassiano_js</title>
-    <link rel="stylesheet" href="/static/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>{{job.title}} - {{company_name}} </title>
+    {% include 'bootstrap.html'%}
   </head>
-<!--   {%include 'nav.html'%} -->
+  
   <body>
-    <div>
-      {%for job in job%}
-        {%include 'jobitem.html'%}      
-        <p>Responsibilities: {{job['responsibilities']}}</p>
-        <p>Requirements: {{job['requirements']}}</p>
-      {%endfor%}
+    {%include 'nav.html'%}
+    {%include 'banner.html'%}
+    <div class='mt-4'style='padding-bottom:4px'>
+      <div class='col-9'>
+        <h4 class='mt-1'>{{job.title}} </h4>
+        <div><b>Location: </b>{{job.joblocation}}</div>
+        <div><b>Resonsibilities: </b>{{job.responsibilities}}</div>
+        <div><b>Requirements: </b>{{job.requirements}}</div>
+        {%if 'salary' in job%}
+          <div><b>Salary: </b>{{job.salary}} {{job.currency}}</div>
+        {%endif%}
+      </div>
+      </div>
     </div>
   </body>
 </html>
