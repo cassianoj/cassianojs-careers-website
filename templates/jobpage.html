@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang='en-US'>
+  
   <head>
     <title>{{job.title}} - {{company_name}} </title>
     {% include 'bootstrap.html'%}
@@ -8,17 +9,21 @@
   <body>
     {%include 'nav.html'%}
     {%include 'banner.html'%}
-    <div class='mt-4'style='padding-bottom:4px'>
-      <div class='col-9'>
-        <h4 class='mt-1'>{{job.title}} </h4>
-        <div><b>Location: </b>{{job.joblocation}}</div>
-        <div><b>Resonsibilities: </b>{{job.responsibilities}}</div>
-        <div><b>Requirements: </b>{{job.requirements}}</div>
-        {%if 'salary' in job%}
-          <div><b>Salary: </b>{{job.salary}} {{job.currency}}</div>
-        {%endif%}
-      </div>
-      </div>
+    <div class='container'>
+      <h4 class='mt-1'>{{job.title}} </h4>
+      <b>Location: </b>
+      <p>{{job.joblocation}}</p>
+      <b>Resonsibilities: </b>
+      <p>{{job.responsibilities}}</p>
+      <b>Requirements: </b>
+      <p>{{job.requirements}}</p>
+      {%if 'salary' in job%}
+        <b>Salary: </b>{{job.salary}} {{job.currency}}
+      {%endif%}  
     </div>
+
+    {% include 'form.html'%}
+    
   </body>
+  
 </html>

@@ -1,0 +1,26 @@
+<div style='margin-top:20px'>
+  <form class='container' action="/job/{{job['id']}}/apply" method='post'>
+    <h1 class='mt-7'>Submit for application</h1>
+    <div class='mt-2'>
+      <label for='name'>Name:</label><br>
+      <input id='name' name='name' type='text' placeholder='João Sidney'>
+    </div>
+
+    <div class='mt-2'>
+      <label for='email'>Email:</label><br>
+      <input id='email' name='email' type='email' placeholder='joaosidney@...'>
+    </div class='container m-2'>
+
+    <div class='mt-2'>
+      <label for='github'>GitHub:</label><br>
+      <input id='github' name='github' type='url' value='https://github.com/username' placeholder='https://github.com/username'>
+    </div>
+
+    <div class='mt-2'>
+      <label for='linkedin'>LinkedIn:</label><br>
+      <input id='linkedin' name='linkedin' type='url' value='https://www.linkedin.com/in/' placeholder='https://www.linkedin.com/in/'>
+    </div>
+
+    <div class='mt-2'><input type='submit' value='Submit'></div>
+  </form>
+</div>
