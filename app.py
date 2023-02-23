@@ -1,11 +1,12 @@
 from flask import Flask, render_template, jsonify, request
 from database import load_jobs_from_db, load_job_from_db, add_application_to_db
 import requests
-import json
 import os
+import xml.etree.ElementTree as ET
 
 app = Flask(__name__)
 content = os.environ['LOMADEE_CONTENT']
+LOMADEESOURCEIDSITE = os.environ['LOMADEESOURCEIDSITE']
 
 
 @app.route('/')
@@ -43,9 +44,30 @@ def apply_to_job(id):
 def catfacts():
   req = requests.get(
     'https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=1')
-  data = json.loads(req.content)
+  data = req.json()
   return jsonify(data)
 
+@app.route('/lomadee/nike')
+def get_xml_data():
+    # Make the API request and get the response
+    response = requests.get('https://api.lomadee.com/xml/5901.xml')
+
+    root = ET.fromstring(response.content)
+
+    # Extract the data from the XML file
+    data = []
+    for child in root.findall('offer'):
+        item = {}
+        item['name'] = child.find('name').text
+        item['price'] = child.find('price').text
+        item['link'] = child.find('link').text
+        item['imgsrc'] = child.find('thumbnail').text
+        data.append(item)
+      
+    for my_dict in data:
+        my_dict["link"] = my_dict["link"].replace("LOMADEESOURCEID", LOMADEESOURCEIDSITE)
+    # Return the data as a JSON object
+    return render_template("lomadeenike.html",offers=data)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
