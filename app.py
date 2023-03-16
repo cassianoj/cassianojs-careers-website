@@ -47,27 +47,32 @@ def catfacts():
   data = req.json()
   return jsonify(data)
 
+
 @app.route('/lomadee/nike')
 def get_xml_data():
-    # Make the API request and get the response
-    response = requests.get('https://api.lomadee.com/xml/5901.xml')
+  # Make the API request and get the response
+  response = requests.get('https://api.lomadee.com/xml/5901.xml')
 
-    root = ET.fromstring(response.content)
+  root = ET.fromstring(response.content)
 
-    # Extract the data from the XML file
-    data = []
-    for child in root.findall('offer'):
-        item = {}
-        item['name'] = child.find('name').text
-        item['price'] = child.find('price').text
-        item['link'] = child.find('link').text
-        item['imgsrc'] = child.find('thumbnail').text
-        data.append(item)
-      
-    for my_dict in data:
-        my_dict["link"] = my_dict["link"].replace("LOMADEESOURCEID", LOMADEESOURCEIDSITE)
-    # Return the data as a JSON object
-    return render_template("lomadeenike.html",offers=data)
+  # Extract the data from the XML file
+  data = []
+  for child in root.findall('offer'):
+    item = {}
+    item['name'] = child.find('name').text
+    item['price'] = child.find('price').text
+    item['link'] = child.find('link').text
+    item['imgsrc'] = child.find('thumbnail').text
+    data.append(item)
+
+  for my_dict in data:
+    my_dict["link"] = my_dict["link"].replace("LOMADEESOURCEID",
+                                              LOMADEESOURCEIDSITE)
+  # Return the data as a JSON object
+  return render_template("lomadeenike.html",
+                         offers=data,
+                         company_name='Cassiano')
+
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', debug=True)
